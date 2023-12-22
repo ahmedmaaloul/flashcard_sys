@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+  font-family: 'Tilt Neon', sans-serif;
+  color: #13044F;
+}
+.brand{
+  font-family: 'MuseoModerno';
+  color: #13044F;
+
+}
+/* src/styles.css or src/styles.scss */
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+

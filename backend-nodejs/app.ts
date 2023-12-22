@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import userRoutes from './routes/user';
-
+import cors from 'cors';
 const app: Application = express();
 const port = 3000;
 
@@ -24,11 +24,12 @@ const options = {
 
 
 const swaggerSpec = swaggerJsdoc(options);
+app.use(cors());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/user', userRoutes);
+app.use('/api/user', userRoutes);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

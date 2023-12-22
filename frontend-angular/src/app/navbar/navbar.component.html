@@ -1,0 +1,15 @@
+<!-- src/app/navbar/navbar.component.html -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+      <a class="navbar-brand brand" href="#">merken</a>
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link" *ngIf="!authService.isLoggedIn()" routerLink="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a class="nav-item nav-link" *ngIf="!authService.isLoggedIn()" routerLink="/register">Register</a>
+        <a class="nav-item nav-link" *ngIf="authService.isLoggedIn()" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </div>
+  </div>
+</nav>
+
+
+
+

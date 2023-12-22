@@ -24,7 +24,7 @@ const router = express.Router();
 
 /**
  * @openapi
- * /user/register:
+ * /api/user/register:
  *   post:
  *     tags:
  *       - User
@@ -49,7 +49,7 @@ const router = express.Router();
 
 /**
  * @openapi
- * /user/login:
+ * /api/user/login:
  *   post:
  *     tags:
  *       - User

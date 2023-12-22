@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const user_1 = __importDefault(require("./routes/user"));
+const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 const port = 3000;
 // Swagger configuration
@@ -24,10 +25,11 @@ const options = {
     apis: ['backend-nodejs/routes/user.ts'],
 };
 const swaggerSpec = (0, swagger_jsdoc_1.default)(options);
+app.use((0, cors_1.default)());
 app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerSpec));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
-app.use('/user', user_1.default);
+app.use('/api/user', user_1.default);
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

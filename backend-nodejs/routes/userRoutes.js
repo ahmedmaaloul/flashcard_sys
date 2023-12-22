@@ -101,4 +101,4 @@ const router = express.Router();
 router.post('/register', userController.register);
 router.post('/login', userController.login);
 exports.default = router;
-//# sourceMappingURL=user.js.map
+//# sourceMappingURL=userRoutes.js.map

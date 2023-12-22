@@ -7,6 +7,11 @@ const router = Router();
 /**
  * @openapi
  * components:
+ *   securitySchemes:
+ *     bearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
  *   schemas:
  *     Flashcard:
  *       type: object
@@ -36,16 +41,15 @@ const router = Router();
  *         category: "Geography"
  *         knownStatus: false
  *         userId: "123e4567-e89b-12d3-a456-426614174000"
- */
-
-/**
- * @openapi
+ *
  * /api/flashcards:
  *   post:
  *     tags:
  *       - Flashcards
  *     summary: Create a new flashcard
  *     description: Creates a new flashcard for the user
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -57,16 +61,31 @@ const router = Router();
  *         description: Flashcard created successfully
  *       400:
  *         description: Bad request
- */
-
-/**
- * @openapi
+ *   get:
+ *     tags:
+ *       - Flashcards
+ *     summary: Get all user flashcards
+ *     description: Retrieves all flashcards for a specific user
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: A list of flashcards
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Flashcard'
+ *
  * /api/flashcards/{cardId}:
  *   delete:
  *     tags:
  *       - Flashcards
  *     summary: Delete a flashcard
  *     description: Deletes a specific flashcard
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: cardId
@@ -80,16 +99,13 @@ const router = Router();
  *         description: Flashcard deleted successfully
  *       404:
  *         description: Flashcard not found
- */
-
-/**
- * @openapi
- * /api/flashcards/{cardId}:
  *   put:
  *     tags:
  *       - Flashcards
  *     summary: Update a flashcard
  *     description: Updates a specific flashcard
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: cardId
@@ -109,35 +125,15 @@ const router = Router();
  *         description: Flashcard updated successfully
  *       404:
  *         description: Flashcard not found
- */
-
-/**
- * @openapi
- * /api/flashcards:
- *   get:
- *     tags:
- *       - Flashcards
- *     summary: Get all user flashcards
- *     description: Retrieves all flashcards for a specific user
- *     responses:
- *       200:
- *         description: A list of flashcards
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Flashcard'
- */
-
-/**
- * @openapi
+ *
  * /api/flashcards/category/{category}:
  *   get:
  *     tags:
  *       - Flashcards
  *     summary: Get flashcards by category
  *     description: Retrieves flashcards belonging to a specific category
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: category
@@ -148,16 +144,15 @@ const router = Router();
  *     responses:
  *       200:
  *         description: A list of flashcards in the specified category
- */
-
-/**
- * @openapi
+ *
  * /api/flashcards/{cardId}/knownStatus:
  *   patch:
  *     tags:
  *       - Flashcards
  *     summary: Mark a flashcard as known
  *     description: Marks a specific flashcard's known status as true
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: cardId

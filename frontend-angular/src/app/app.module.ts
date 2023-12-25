@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import {FormsModule} from "@angular/forms";
 import {RouterLink, RouterOutlet} from "@angular/router";
 import { HttpClientModule } from '@angular/common/http';
+import { CreateFlashcardComponent } from './create-flashcard/create-flashcard.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    CreateFlashcardComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     RouterOutlet,
     RouterLink,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,16 +1,21 @@
 import { Request, Response } from 'express';
 import { Flashcard } from '../models/flashcard';
-
+import { v4 as uuidv4 } from 'uuid';
 export const createFlashcard = async (req: Request, res: Response) => {
     // @ts-ignore
     const userId = req.userId; // The user ID extracted from the token
+    console.log(userId)
+    console.log(req)
     const { question, answer, category } = req.body;
-
+    const  knownStatus= false;
     try {
+        const cardId = uuidv4();
         const flashcard = await Flashcard.create({
+            cardId,
             question,
             answer,
             category,
+            knownStatus,
             userId
         });
         res.status(201).json(flashcard);
@@ -88,5 +93,23 @@ export const getFlashcardById = async (req, res) => {
         res.json(flashcard);
     } catch (error) {
         res.status(500).send('Error retrieving flashcard');
+    }
+};
+export const getTotalFlashcardsCount = async (req, res) => {
+    try {
+        // Correct usage of the count method
+        const count = await Flashcard.count(); // This counts all flashcards
+        res.json(count); // Send the count as an object
+    } catch (error) {
+        res.status(500).send('Error getting total flashcards count');
+    }
+};
+
+export const getKnownFlashcardsCount = async (req, res) => {
+    try {
+        const count = await Flashcard.count({ where: { knownStatus: true } });
+        res.json(count);
+    } catch (error) {
+        res.status(500).send('Error getting known flashcards count');
     }
 };

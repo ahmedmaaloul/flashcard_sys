@@ -9,17 +9,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getFlashcardById = exports.markFlashcardAsKnown = exports.getFlashcardsByCategory = exports.getAllUserFlashcards = exports.updateFlashcard = exports.deleteFlashcard = exports.createFlashcard = void 0;
+exports.getKnownFlashcardsCount = exports.getTotalFlashcardsCount = exports.getFlashcardById = exports.markFlashcardAsKnown = exports.getFlashcardsByCategory = exports.getAllUserFlashcards = exports.updateFlashcard = exports.deleteFlashcard = exports.createFlashcard = void 0;
 const flashcard_1 = require("../models/flashcard");
+const uuid_1 = require("uuid");
 const createFlashcard = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // @ts-ignore
     const userId = req.userId; // The user ID extracted from the token
+    console.log(userId);
+    console.log(req);
     const { question, answer, category } = req.body;
+    const knownStatus = false;
     try {
+        const cardId = (0, uuid_1.v4)();
         const flashcard = yield flashcard_1.Flashcard.create({
+            cardId,
             question,
             answer,
             category,
+            knownStatus,
             userId
         });
         res.status(201).json(flashcard);
@@ -109,4 +116,25 @@ const getFlashcardById = (req, res) => __awaiter(void 0, void 0, void 0, functio
     }
 });
 exports.getFlashcardById = getFlashcardById;
+const getTotalFlashcardsCount = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        // Correct usage of the count method
+        const count = yield flashcard_1.Flashcard.count(); // This counts all flashcards
+        res.json(count); // Send the count as an object
+    }
+    catch (error) {
+        res.status(500).send('Error getting total flashcards count');
+    }
+});
+exports.getTotalFlashcardsCount = getTotalFlashcardsCount;
+const getKnownFlashcardsCount = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const count = yield flashcard_1.Flashcard.count({ where: { knownStatus: true } });
+        res.json(count);
+    }
+    catch (error) {
+        res.status(500).send('Error getting known flashcards count');
+    }
+});
+exports.getKnownFlashcardsCount = getKnownFlashcardsCount;
 //# sourceMappingURL=flashcardController.js.map

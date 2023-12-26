@@ -199,13 +199,55 @@ const router = Router();
  *         description: Internal server error
  */
 
+/**
+ * @openapi
+ * /api/flashcards/count:
+ *   get:
+ *     tags:
+ *       - Flashcards
+ *     summary: Get total flashcards count
+ *     description: Retrieves the total count of flashcards
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Total flashcards count
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: number
+ *       500:
+ *         description: Internal server error
+ *
+ * /api/flashcards/known/count:
+ *   get:
+ *     tags:
+ *       - Flashcards
+ *     summary: Get known flashcards count
+ *     description: Retrieves the count of flashcards marked as known
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Known flashcards count
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: number
+ *       500:
+ *         description: Internal server error
+ */
 
-router.post('/', flashcardController.createFlashcard);
-router.delete('/:cardId', flashcardController.deleteFlashcard);
+
 router.post('/', authenticateToken, flashcardController.createFlashcard);
+router.get('/count', authenticateToken, flashcardController.getTotalFlashcardsCount);
+router.get('/known/count', authenticateToken, flashcardController.getKnownFlashcardsCount);
 router.get('/', flashcardController.getAllUserFlashcards);
 router.get('/category/:category', flashcardController.getFlashcardsByCategory);
-router.patch('/:cardId/knownStatus', flashcardController.markFlashcardAsKnown);
 router.get('/:cardId', authenticateToken, flashcardController.getFlashcardById);
+router.delete('/:cardId', flashcardController.deleteFlashcard);
+router.patch('/:cardId/knownStatus', flashcardController.markFlashcardAsKnown);
+
+
 
 export default router;

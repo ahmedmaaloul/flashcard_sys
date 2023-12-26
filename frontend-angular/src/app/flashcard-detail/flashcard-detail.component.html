@@ -1,6 +1,6 @@
 <div *ngIf="flashcard" class="container mt-4">
     <div class="card">
-        <div class="card-body">
+        <div class="card-body text-center">
             <h5 class="card-title">{{ flashcard.question }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Category: {{ flashcard.category }}</h6>
             <p class="card-text">{{ flashcard.answer }}</p>
@@ -11,7 +11,12 @@
                     </span>
                 </small>
             </p>
-            <!-- Add more details as needed -->
+            <div class="d-flex justify-content-center">
+                <button *ngIf="!flashcard.knownStatus" class="btn btn-outline-success" (click)="toggleKnownStatus()">
+                    Mark as Known
+                </button>
+            </div>
         </div>
     </div>
 </div>
+

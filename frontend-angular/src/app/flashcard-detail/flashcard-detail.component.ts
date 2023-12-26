@@ -25,4 +25,16 @@ export class FlashcardDetailComponent implements OnInit {
       );
     }
   }
+  toggleKnownStatus() {
+    if (this.flashcard && this.flashcard.cardId) {
+      this.flashcardService.toggleKnownStatus(this.flashcard.cardId, !this.flashcard.knownStatus)
+          .subscribe(
+              () => {
+                this.flashcard!.knownStatus = !this.flashcard!.knownStatus; // Update local state
+                // Optionally, refresh the flashcard details or show a success message
+              },
+              error => console.error('Error updating known status:', error)
+          );
+    }
+  }
 }

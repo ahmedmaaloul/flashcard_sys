@@ -13,6 +13,8 @@ import {RouterLink, RouterOutlet} from "@angular/router";
 import { HttpClientModule } from '@angular/common/http';
 import { CreateFlashcardComponent } from './create-flashcard/create-flashcard.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HighchartsChartModule } from 'highcharts-angular';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterOutlet,
     RouterLink,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HighchartsChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

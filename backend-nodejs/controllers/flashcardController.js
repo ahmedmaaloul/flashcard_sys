@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getKnownFlashcardsCount = exports.getTotalFlashcardsCount = exports.getFlashcardById = exports.markFlashcardAsKnown = exports.getFlashcardsByCategory = exports.getAllUserFlashcards = exports.updateFlashcard = exports.deleteFlashcard = exports.createFlashcard = void 0;
+exports.getKnownFlashcardsCount = exports.toggleKnownStatus = exports.getTotalFlashcardsCount = exports.getFlashcardById = exports.markFlashcardAsKnown = exports.getFlashcardsByCategory = exports.getAllUserFlashcards = exports.updateFlashcard = exports.deleteFlashcard = exports.createFlashcard = void 0;
 const flashcard_1 = require("../models/flashcard");
 const uuid_1 = require("uuid");
 const createFlashcard = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -65,7 +65,8 @@ const updateFlashcard = (req, res) => __awaiter(void 0, void 0, void 0, function
 exports.updateFlashcard = updateFlashcard;
 const getAllUserFlashcards = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { userId } = req.body; // Or get from JWT token if implemented
+        // @ts-ignore
+        const userId = req.userId;
         const flashcards = yield flashcard_1.Flashcard.findAll({ where: { userId } });
         res.json(flashcards);
     }
@@ -127,6 +128,25 @@ const getTotalFlashcardsCount = (req, res) => __awaiter(void 0, void 0, void 0, 
     }
 });
 exports.getTotalFlashcardsCount = getTotalFlashcardsCount;
+const toggleKnownStatus = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { cardId } = req.params;
+    const { knownStatus } = req.body;
+    try {
+        // Find the flashcard by ID
+        const flashcard = yield flashcard_1.Flashcard.findByPk(cardId);
+        if (!flashcard) {
+            return res.status(404).send('Flashcard not found');
+        }
+        // Update the known status
+        flashcard.knownStatus = knownStatus;
+        yield flashcard.save();
+        res.status(200).json(flashcard);
+    }
+    catch (error) {
+        res.status(500).send('Error updating flashcard status');
+    }
+});
+exports.toggleKnownStatus = toggleKnownStatus;
 const getKnownFlashcardsCount = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const count = yield flashcard_1.Flashcard.count({ where: { knownStatus: true } });

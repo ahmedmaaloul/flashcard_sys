@@ -50,7 +50,8 @@ export const updateFlashcard = async (req: Request, res: Response) => {
 
 export const getAllUserFlashcards = async (req: Request, res: Response) => {
     try {
-        const { userId } = req.body; // Or get from JWT token if implemented
+        // @ts-ignore
+        const userId = req.userId;
         const flashcards = await Flashcard.findAll({ where: { userId } });
         res.json(flashcards);
     } catch (error) {
@@ -104,7 +105,26 @@ export const getTotalFlashcardsCount = async (req, res) => {
         res.status(500).send('Error getting total flashcards count');
     }
 };
+export const toggleKnownStatus = async (req, res) => {
+    const { cardId } = req.params;
+    const { knownStatus } = req.body;
 
+    try {
+        // Find the flashcard by ID
+        const flashcard = await Flashcard.findByPk(cardId);
+        if (!flashcard) {
+            return res.status(404).send('Flashcard not found');
+        }
+
+        // Update the known status
+        flashcard.knownStatus = knownStatus;
+        await flashcard.save();
+
+        res.status(200).json(flashcard);
+    } catch (error) {
+        res.status(500).send('Error updating flashcard status');
+    }
+};
 export const getKnownFlashcardsCount = async (req, res) => {
     try {
         const count = await Flashcard.count({ where: { knownStatus: true } });
@@ -113,3 +133,4 @@ export const getKnownFlashcardsCount = async (req, res) => {
         res.status(500).send('Error getting known flashcards count');
     }
 };
+

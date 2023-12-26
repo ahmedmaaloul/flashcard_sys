@@ -33,7 +33,20 @@ export const register = async (req: Request, res: Response): Promise<void> => {
         res.status(500).send('Error registering new user');
     }
 };
+export const getUsername = async (req, res) => {
+    try {
+        const userId = req.userId; // Assuming req.userId is set by your auth middleware
+        const user = await User.findByPk(userId);
 
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.json({ username: user.username });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
 export const login = async (req: Request, res: Response): Promise<void> => {
     try {
         const { username, password } = req.body;

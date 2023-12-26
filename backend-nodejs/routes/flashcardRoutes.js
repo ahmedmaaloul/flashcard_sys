@@ -261,13 +261,88 @@ const router = (0, express_1.Router)();
  *       500:
  *         description: Internal server error
  */
+/**
+ * @openapi
+ * /api/flashcards/{cardId}/knownStatus:
+ *   patch:
+ *     tags:
+ *       - Flashcards
+ *     summary: Toggle the known status of a flashcard
+ *     description: Marks a flashcard as known or unknown
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: cardId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Unique ID of the flashcard
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               knownStatus:
+ *                 type: boolean
+ *                 description: New known status of the flashcard
+ *     responses:
+ *       200:
+ *         description: Known status updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Flashcard'
+ *       404:
+ *         description: Flashcard not found
+ *       500:
+ *         description: Internal server error
+ *
+ * /api/flashcards/count:
+ *   get:
+ *     tags:
+ *       - Flashcards
+ *     summary: Get total flashcards count
+ *     description: Retrieves the total count of flashcards
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Total flashcards count
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: number
+ *       500:
+ *         description: Internal server error
+ *
+ * /api/flashcards/known/count:
+ *   get:
+ *     tags:
+ *       - Flashcards
+ *     summary: Get known flashcards count
+ *     description: Retrieves the count of flashcards marked as known
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Known flashcards count
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: number
+ *       500:
+ *         description: Internal server error
+ */
 router.post('/', authMiddleware_1.default, flashcardController.createFlashcard);
 router.get('/count', authMiddleware_1.default, flashcardController.getTotalFlashcardsCount);
 router.get('/known/count', authMiddleware_1.default, flashcardController.getKnownFlashcardsCount);
-router.get('/', flashcardController.getAllUserFlashcards);
-router.get('/category/:category', flashcardController.getFlashcardsByCategory);
+router.get('/', authMiddleware_1.default, flashcardController.getAllUserFlashcards);
+router.get('/category/:category', authMiddleware_1.default, flashcardController.getFlashcardsByCategory);
 router.get('/:cardId', authMiddleware_1.default, flashcardController.getFlashcardById);
-router.delete('/:cardId', flashcardController.deleteFlashcard);
-router.patch('/:cardId/knownStatus', flashcardController.markFlashcardAsKnown);
+router.delete('/:cardId', authMiddleware_1.default, flashcardController.deleteFlashcard);
+router.patch('/:cardId/knownStatus', authMiddleware_1.default, flashcardController.toggleKnownStatus);
 exports.default = router;
 //# sourceMappingURL=flashcardRoutes.js.map

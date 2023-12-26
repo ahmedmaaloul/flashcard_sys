@@ -1,0 +1,17 @@
+<div *ngIf="flashcard" class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ flashcard.question }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Category: {{ flashcard.category }}</h6>
+            <p class="card-text">{{ flashcard.answer }}</p>
+            <p class="card-text">
+                <small class="text-muted">Status:
+                    <span [class]="flashcard.knownStatus ? 'text-success' : 'text-danger'">
+                        {{ flashcard.knownStatus ? 'Known' : 'Unknown' }}
+                    </span>
+                </small>
+            </p>
+            <!-- Add more details as needed -->
+        </div>
+    </div>
+</div>

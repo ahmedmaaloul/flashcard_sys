@@ -14,7 +14,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateFlashcardComponent } from './create-flashcard/create-flashcard.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HighchartsChartModule } from 'highcharts-angular';
-
+import { UpdateFlashcardComponent } from './update-flashcard/update-flashcard.component';
+import { FlashcardsViewComponent } from './flashcards-view/flashcards-view.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { FlashcardDetailComponent } from './flashcard-detail/flashcard-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { HighchartsChartModule } from 'highcharts-angular';
     RegisterComponent,
     NavbarComponent,
     FooterComponent,
-    CreateFlashcardComponent
+    CreateFlashcardComponent,
+    UpdateFlashcardComponent,
+    FlashcardsViewComponent,
+    FlashcardDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +41,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
     AppRoutingModule,
     ReactiveFormsModule,
     HighchartsChartModule,
+    AgGridModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

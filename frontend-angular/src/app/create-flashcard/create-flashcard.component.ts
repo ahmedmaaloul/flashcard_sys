@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FlashcardService } from '../services/flashcard.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-flashcard',
@@ -10,7 +11,7 @@ import { FlashcardService } from '../services/flashcard.service';
 export class CreateFlashcardComponent {
   flashcardForm: FormGroup;
 
-  constructor(private flashcardService: FlashcardService, private formBuilder: FormBuilder) {
+  constructor(private flashcardService: FlashcardService, private formBuilder: FormBuilder,private router: Router) {
     this.flashcardForm = this.formBuilder.group({
       question: ['', Validators.required],
       answer: ['', Validators.required],
@@ -24,7 +25,7 @@ export class CreateFlashcardComponent {
       this.flashcardService.createFlashcard(this.flashcardForm.value).subscribe(
           response => {
             console.log('Flashcard created successfully.', response);
-            // Handle post-creation logic (e.g., navigation or success message)
+            this.router.navigate(['/home']);
           },
           error => {
             console.error('Error occurred while creating flashcard:', error);

@@ -1,5 +1,5 @@
 <div class="container mt-4">
-    <h2>Create Flashcard</h2>
+    <h2>Update Flashcard</h2>
     <form [formGroup]="flashcardForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="question">Question</label>
@@ -13,6 +13,6 @@
             <label for="category">Category</label>
             <input type="text" class="form-control" id="category" formControlName="category" required>
         </div>
-        <button type="submit" class="btn btn-primary my-1">Create Flashcard</button>
+        <button type="submit" class="btn btn-primary my-1">Update Flashcard</button>
     </form>
 </div>

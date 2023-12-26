@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.markFlashcardAsKnown = exports.getFlashcardsByCategory = exports.getAllUserFlashcards = exports.updateFlashcard = exports.deleteFlashcard = exports.createFlashcard = void 0;
+exports.getFlashcardById = exports.markFlashcardAsKnown = exports.getFlashcardsByCategory = exports.getAllUserFlashcards = exports.updateFlashcard = exports.deleteFlashcard = exports.createFlashcard = void 0;
 const flashcard_1 = require("../models/flashcard");
 const createFlashcard = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // @ts-ignore
@@ -94,4 +94,19 @@ const markFlashcardAsKnown = (req, res) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.markFlashcardAsKnown = markFlashcardAsKnown;
+const getFlashcardById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { cardId } = req.params;
+    try {
+        const flashcard = yield flashcard_1.Flashcard.findOne({ where: { cardId } });
+        if (!flashcard) {
+            res.status(404).send('Flashcard not found');
+            return;
+        }
+        res.json(flashcard);
+    }
+    catch (error) {
+        res.status(500).send('Error retrieving flashcard');
+    }
+});
+exports.getFlashcardById = getFlashcardById;
 //# sourceMappingURL=flashcardController.js.map

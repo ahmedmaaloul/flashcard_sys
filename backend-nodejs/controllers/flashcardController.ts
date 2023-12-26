@@ -76,3 +76,17 @@ export const markFlashcardAsKnown = async (req: Request, res: Response) => {
         res.status(500).json({ error: error.message });
     }
 };
+export const getFlashcardById = async (req, res) => {
+    const { cardId } = req.params;
+
+    try {
+        const flashcard = await Flashcard.findOne({ where: { cardId } });
+        if (!flashcard) {
+            res.status(404).send('Flashcard not found');
+            return;
+        }
+        res.json(flashcard);
+    } catch (error) {
+        res.status(500).send('Error retrieving flashcard');
+    }
+};

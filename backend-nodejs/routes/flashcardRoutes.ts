@@ -168,6 +168,37 @@ const router = Router();
  *         description: Flashcard not found
  */
 
+/**
+ * @openapi
+ * /api/flashcards/{cardId}:
+ *   get:
+ *     tags:
+ *       - Flashcards
+ *     summary: Get a single flashcard
+ *     description: Retrieves a specific flashcard by its ID
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: cardId
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: The flashcard ID
+ *     responses:
+ *       200:
+ *         description: A single flashcard
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Flashcard'
+ *       404:
+ *         description: Flashcard not found
+ *       500:
+ *         description: Internal server error
+ */
+
 
 router.post('/', flashcardController.createFlashcard);
 router.delete('/:cardId', flashcardController.deleteFlashcard);
@@ -175,5 +206,6 @@ router.post('/', authenticateToken, flashcardController.createFlashcard);
 router.get('/', flashcardController.getAllUserFlashcards);
 router.get('/category/:category', flashcardController.getFlashcardsByCategory);
 router.patch('/:cardId/knownStatus', flashcardController.markFlashcardAsKnown);
+router.get('/:cardId', authenticateToken, flashcardController.getFlashcardById);
 
 export default router;

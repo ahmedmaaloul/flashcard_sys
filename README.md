@@ -1,5 +1,5 @@
 # Flashcard creation website 
-This project has been developed as a part of a Software Engineering course.
+This project has been developed by students at ESILV Paris
 
 
 ## Installation

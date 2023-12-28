@@ -7,3 +7,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.css'] // if you have specific styles
 })
 export class FooterComponent {}
+  // This class doesn't have any properties or methods as it serves as a simple footer component.

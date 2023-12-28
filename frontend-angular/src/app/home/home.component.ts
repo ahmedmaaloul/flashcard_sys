@@ -8,12 +8,12 @@ import { FlashcardService } from '../services/flashcard.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  Highcharts: typeof Highcharts = Highcharts;
-  chartOptions!: Highcharts.Options;
+  Highcharts: typeof Highcharts = Highcharts;   // we declare Highcharts as a type to enable its usage in the component
+  chartOptions!: Highcharts.Options;   // and property to store Highcharts chart options
   totalFlashcards: number = 0;
   knownFlashcards: number = 0;
 
-  constructor(private flashcardService: FlashcardService) {}
+  constructor(private flashcardService: FlashcardService) {}   // constructor to inject FlashcardService dependency
 
   ngOnInit() {
     this.loadFlashcardData();

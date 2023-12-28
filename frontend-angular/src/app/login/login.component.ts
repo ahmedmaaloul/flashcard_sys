@@ -1,13 +1,16 @@
 // src/app/login/login.component.ts
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+// Import authentication service
+import { AuthService } from '../auth.service'; 
+// Import Angular Router for navigation
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
+  // Properties to store username and password entered by the user
   username = '';
   password = '';
 
@@ -19,6 +22,7 @@ export class LoginComponent {
         this.authService.setToken(data.token);
         this.router.navigate(['/home']);
       },
+      // Error callback
       error => console.error(error)
     );
   }

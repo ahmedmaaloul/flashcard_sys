@@ -13,11 +13,16 @@
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
 
+
+  <!-- About us -->
+
   <h3>Creating and learning flashcards has never been easier.</h3>
   <p>Create your own set of flashcards is simple with our free flashcard maker !
     You just have to add a question and its answer. You can even class them in different categories !
     Once your flashcard set is complete, you can study and share it with friends.
     </p>
+
+    <!-- Dialog Box -->
   <div class="dialog-box">
     <p>
       Culture Time &nbsp;&nbsp;
@@ -25,6 +30,15 @@
     </p>
   </div>
 </div>
+
+<!-- Contact us -->
+
+<section class="contact">
+  <h4>Contact</h4>
+<a href="mailto:flashcard@gmail.com">flashcard@gmail.com</a>
+</section>
+
+<!-- CSS Styles Login Page -->
 
 <style>
 
@@ -37,19 +51,57 @@ p{
   font-size: 1.2rem;
 }
 
+/* dialog box properties */
 .dialog-box{
   background-color: #0d6efd;
   padding: 1.5% 1.5% 1.5% 1.5%;
   border-radius: 50px;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 5%;
   width: 70%;
+  box-shadow: rgb(209, 209, 209) 1px 1px 50px;
 }
 
+/* dialog box text properties */
 .dialog-box p , .dialog-box i {
   color: white;
   font-size: 1.2rem;
   text-align: center;
 }
 
+/* CSS for contact section */
+.contact{
+  display: flex;
+  justify-content: center;
+  background-color: rgb(203, 223, 255);
+  overflow: hidden;
+  width: 380px;
+  height:80px;
+  margin: 25px auto 25px auto;
+  border-radius: 50px;
+  padding-top: 20px;
+  transition: all 0.2s ease-in;
+  box-shadow: rgb(229, 229, 229) 1px 1px 50px;
+}
+
+/* animation contact */
+.contact:hover{
+  width: 400px;
+  height:90px;
+}
+
+/* email link properties */
+.contact a{
+  font-size: 130%;
+  text-decoration: none;
+  margin-left: 15px;
+  transition: all 0.2s ease-in;
+}
+
+.contact a:hover{
+  font-size: 136%;
+}
+
 </style>
+
+<!-- CSS Styles Login Page -->

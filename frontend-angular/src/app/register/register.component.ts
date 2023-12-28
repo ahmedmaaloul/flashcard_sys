@@ -13,12 +13,14 @@ export class RegisterComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
+  //the method to handle the registration process
   register() {
     this.authService.register(this.username, this.password).subscribe(
       data => {
         this.authService.setToken(data.token);
         this.router.navigate(['/home']);
       },
+      // Error callback
       error => console.error(error)
     );
   }

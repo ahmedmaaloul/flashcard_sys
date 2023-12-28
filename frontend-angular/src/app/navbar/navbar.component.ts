@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
+// Component decorator to define metadata for the component
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -21,7 +22,8 @@ export class NavbarComponent {
         }
     );
   }
-  logout() {
+  logout() {   // the method to handle the logout process
+
     this.authService.logout();
     this.router.navigate(['/login']);
   }

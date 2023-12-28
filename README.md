@@ -1,5 +1,10 @@
-# Flashcard creation website 
-This project has been developed by students at ESILV Paris
+# <h1>merken</h1>*
+This project has been developed by students at ESILV Paris, aiming to provide a website that enables users to effectively manage their flashcards. We are well aware of the benefits of flashcards, particularly in aiding memory retention, especially among students.
+
+
+## Modeling
+<img src="./ClassDiagram.png" alt="ClassDiagram" >
+
 
 Repositroy Link (Github) : https://github.com/ahmedmaaloul/flashcard_sys
 ## Installation
@@ -56,5 +61,8 @@ Feel free to discover the project, explore the code and change its content to se
 ## Contributions
 
 This project has been developed by [Ahmed Malloul](https://github.com/ahmedmaaloul), [Jade Bettoya](https://github.com/jadebettoya) and [Thibault Biville](https://github.com/jackBlaster).
+
+
+<small>*merken = memorize</small>
 
 

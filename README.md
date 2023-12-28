@@ -1,6 +1,7 @@
 # <h1>merken*</h1>
 This project has been developed by students at ESILV Paris, aiming to provide a website that enables users to effectively manage their flashcards. We are well aware of the benefits of flashcards, particularly in aiding memory retention, especially among students.
 
+Repositroy Link (Github) : https://github.com/ahmedmaaloul/flashcard_sys
 
 ## Modeling
 <img src="./ClassDiagram.png" alt="ClassDiagram" >
@@ -13,7 +14,7 @@ Pie chart :
 AG Grid :
 <img src="./AG_grid_HL.jpeg" alt="AGgrid" >
 
-Repositroy Link (Github) : https://github.com/ahmedmaaloul/flashcard_sys
+
 ## Installation
 
 - First you need to have access to :

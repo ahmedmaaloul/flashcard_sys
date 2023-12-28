@@ -30,7 +30,7 @@ View Flashcard Page
 
 ## Contributions
 
-This project has been developed by [Ahmed Malloul](https://github.com/ahmedmaaloul), [Jade Bettoya](https://github.com/jadebettoya) and [Thibault Biville](https://github.com/jackBlaster).
+This project has been developed by [Ahmed MAALOUL](https://github.com/ahmedmaaloul), [Jade BETTOYA](https://github.com/jadebettoya) and [Thibault BIVILLE](https://github.com/jackBlaster).
 
 
 <small>*merken = memorize</small>

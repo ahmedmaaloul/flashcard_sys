@@ -1,10 +1,17 @@
-# <h1>merken</h1>*
+# <h1>merken*</h1>
 This project has been developed by students at ESILV Paris, aiming to provide a website that enables users to effectively manage their flashcards. We are well aware of the benefits of flashcards, particularly in aiding memory retention, especially among students.
 
 
 ## Modeling
 <img src="./ClassDiagram.png" alt="ClassDiagram" >
 
+## Highlights
+In this project, we used 2 advanced features !. We have used HighCharts and AG Grid
+
+Pie chart :
+<img src="./HighCharts_HL.jpeg" alt="PieChart" >
+AG Grid :
+<img src="./AG_grid_HL.jpeg" alt="AGgrid" >
 
 Repositroy Link (Github) : https://github.com/ahmedmaaloul/flashcard_sys
 ## Installation

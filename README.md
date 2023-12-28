@@ -30,7 +30,7 @@ cd ./frontend-angular
 ```
 
 - Before starting the app, you will need to synchronize the database.
-    - On PgAdmin (for PostgresQL), create a user ```flashcard_user``` with a password (for example: ```onepiece```).</br>
+    - On PgAdmin (for PostgresQL), create a user ```flashcard_user``` with a password ```onepiece```.</br>
       Then create a database ```flashcard_db``` and give your user access to it.
     - Now that you have our database and our user, run this command in the directory /flashcard_sys :
   ```bash 

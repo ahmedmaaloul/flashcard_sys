@@ -1,0 +1,28 @@
+
+/* Background legal section */
+
+.legal{
+    background: rgba(0, 0, 0, 0.2);
+
+}
+
+/* legal list properties */
+
+.legal ul{
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 40%;
+    margin: auto;
+    padding: 3vh 0 4vh 0;
+    font-size: 110%;
+    text-align: center;
+    transition: all 0.2 ease-in;
+}
+
+/* legal list animation */
+
+.legal li:hover{
+    text-decoration: underline;
+}
